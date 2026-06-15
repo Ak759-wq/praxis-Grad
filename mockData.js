@@ -264,7 +264,7 @@ exports.MOCK_COLLEGES = {
     ],
   }
         ],
-        "seats": "120 Seats/Batch",
+        "seats": "300 Seats/Batch (May vary depending on chosen partner university campus)",
         "laptop_provided": false,
         "hiring_partners_count": 150,
         "is_trending": false,
@@ -282,7 +282,7 @@ exports.MOCK_COLLEGES = {
         "fastTrack": false,
         "fastTrackDetails": "",
         "foundingYear": 2023,
-        "batchSize": 120,
+        "batchSize": 300,
         "degreeRecognition": "UGC Approved Degree via Partnership with multiple Universities",
         "entranceExam": {
             "pattern": "Online Aptitude & Logical Evaluation (60 mins MCQ)",
@@ -463,7 +463,7 @@ exports.MOCK_COLLEGES = {
     ],
   }
         ],
-        "seats": "200 Seats/Batch",
+        "seats": "200 Seats/Batch (May vary according to the chosen partner university campus)",
         "laptop_provided": false,
         "hiring_partners_count": 150,
         "is_trending": false,
@@ -553,7 +553,7 @@ exports.MOCK_COLLEGES = {
     ],
   }
         ],
-        "seats": "300 Seats/Batch",
+        "seats": "300 Seats/Batch (May vary depending on the chosen partner university campus)",
         "laptop_provided": false,
         "hiring_partners_count": 150,
         "is_trending": false,
@@ -1199,7 +1199,7 @@ exports.MOCK_COLLEGES = {
     ],
   }
         ],
-        "seats": "180 Seats/Batch (Selective Admissions)",
+        "seats": "180 Seats/Batch (Selective Admissions - May vary by partner university campus)",
         "laptop_provided": "MacBook Air",
         "hiring_partners_count": 800,
         "brochureUrl": "/brochures/newton.pdf",

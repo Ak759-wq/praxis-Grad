@@ -306,7 +306,7 @@ export const MOCK_COLLEGES: Record<string, ScrapedCollege> = {
         review_text: "Valued for its niche focus on decentralized tech, massive placement network (1000+ partners), and portfolio-driven hiring approach."
       }
     ],
-    seats: "300 Seats/Batch",
+    seats: "300 Seats/Batch (May vary depending on chosen partner university campus)",
     laptop_provided: false,
     hiring_partners_count: 1200,
     is_trending: false,
@@ -493,7 +493,7 @@ export const MOCK_COLLEGES: Record<string, ScrapedCollege> = {
         review_text: "Students value the intensive daily coding routines and massive placement drives connected to hundreds of tech startups."
       }
     ],
-    seats: "200 Seats/Batch",
+    seats: "200 Seats/Batch (May vary according to the chosen partner university campus)",
     laptop_provided: false,
     hiring_partners_count: 3000,
     is_trending: false,
@@ -577,7 +577,7 @@ export const MOCK_COLLEGES: Record<string, ScrapedCollege> = {
         review_text: "Strong reviews for embedding official industry-recognized certifications directly into the degree program."
       }
     ],
-    seats: "300 Seats/Batch",
+    seats: "300 Seats/Batch (May vary depending on the chosen partner university campus)",
     laptop_provided: false,
     hiring_partners_count: 3100,
     is_trending: false,
@@ -1188,7 +1188,7 @@ export const MOCK_COLLEGES: Record<string, ScrapedCollege> = {
         review_text: "Recognized globally for its mandatory 6-month internship, MacBook provision, and global immersion programs (Silicon Valley trips)."
       }
     ],
-    seats: "180 Seats/Batch (Selective Admissions)",
+    seats: "180 Seats/Batch (Selective Admissions - May vary by partner university campus)",
     laptop_provided: "MacBook Air",
     hiring_partners_count: 800,
     brochureUrl: "/brochures/newton.pdf",
