@@ -1640,7 +1640,7 @@ export const MOCK_COLLEGES: Record<string, ScrapedCollege> = {
     name: "100x School",
     brochureUrl: "/brochures/100x.pdf",
     website_url: "https://100xschool.in",
-    apply_url: "https://100xschool.in",
+    apply_url: "https://100xschool.in/under-grad",
     image_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRg2RfMDy-Q0GZd_EHvRGX5wQ-QdOTsjCj1ug&s",
     eligibility: "12th Standard / Undergrads / Professionals + portfolio review & intensive coding interview.",
     location: "Delhi NCR (Residential & Hybrid models)",
