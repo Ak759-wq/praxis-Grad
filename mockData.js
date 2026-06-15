@@ -463,7 +463,7 @@ exports.MOCK_COLLEGES = {
     ],
   }
         ],
-        "seats": "120 Seats/Batch",
+        "seats": "200 Seats/Batch",
         "laptop_provided": false,
         "hiring_partners_count": 150,
         "is_trending": false,
@@ -481,7 +481,7 @@ exports.MOCK_COLLEGES = {
         "fastTrack": false,
         "fastTrackDetails": "",
         "foundingYear": 2023,
-        "batchSize": 120,
+        "batchSize": 200,
         "degreeRecognition": "UGC Approved Degree via Partnership with Universities",
         "entranceExam": {
             "pattern": "Online Aptitude & Logical Evaluation (60 mins MCQ)",

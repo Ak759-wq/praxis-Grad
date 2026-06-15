@@ -493,7 +493,7 @@ export const MOCK_COLLEGES: Record<string, ScrapedCollege> = {
         review_text: "Students value the intensive daily coding routines and massive placement drives connected to hundreds of tech startups."
       }
     ],
-    seats: "120 Seats/Batch",
+    seats: "200 Seats/Batch",
     laptop_provided: false,
     hiring_partners_count: 3000,
     is_trending: false,
@@ -510,7 +510,7 @@ export const MOCK_COLLEGES: Record<string, ScrapedCollege> = {
     industryMentors: "Mentors from leading tech startups and corporate scaling hubs",
     fastTrack: false,
     fastTrackDetails: "",
-    batchSize: 120,
+    batchSize: 200,
     degreeRecognition: "UGC Approved Degree via Partnership with Universities",
     entranceExam: {
       pattern: "Online Aptitude & Logical Evaluation (60 mins MCQ)",
