@@ -1879,7 +1879,7 @@ exports.MOCK_COLLEGES = {
         "name": "Physics Wallah Institute of Innovation (PW IOI)",
         "brochureUrl": "/brochures/pwioi.pdf",
         "website_url": "https://pwioi.com/",
-        "apply_url": "https://pwioi.com/",
+        "apply_url": "https://www.pwioi.com/technology/btech-computer-science-program?courseId=67fec08608f981d74c2e6197&_gl=1*v7qmp*_gcl_aw*R0NMLjE3ODE0MTAwMDIuQ2owS0NRandfN1BSQmhEY0FSSXNBTWpWN2prZkJUcGd1aG5YVEJhSlRCMWxZd0RfNXhYY3Y0SXA0Ny1JMzJfOGozUWhwZy0xRm1leFhJWWFBamVnRUFMd193Y0I.*_gcl_au*MTM3NzI0NzA4Ni4xNzgxNDEwMDAy&download=true",
         "image_url": "https://rangde.in/blog-admin/uploads/Physics_Wallah_IOI_10ce51ab89.png",
         "eligibility": "Class 10th & 12th with 50%+ marks + qualifying in PW Common Entrance Exam (CEE) or JEE / CUET scores.",
         "location": "Noida, Delhi NCR (and partners/campuses in Bangalore, Pune)",
