@@ -213,7 +213,7 @@ export const MOCK_COLLEGES: Record<string, ScrapedCollege> = {
     ],
     seats: "120 Seats/Batch",
     laptop_provided: false,
-    hiring_partners_count: 100,
+    hiring_partners_count: 50,
     brochureUrl: "/brochures/mirai.pdf",
     is_trending: false,
     is_new: false,
@@ -308,7 +308,7 @@ export const MOCK_COLLEGES: Record<string, ScrapedCollege> = {
     ],
     seats: "300 Seats/Batch (May vary depending on chosen partner university campus)",
     laptop_provided: false,
-    hiring_partners_count: 1200,
+    hiring_partners_count: 1000,
     is_trending: false,
     is_new: false,
     rating_breakdown: {
@@ -495,7 +495,7 @@ export const MOCK_COLLEGES: Record<string, ScrapedCollege> = {
     ],
     seats: "200 Seats/Batch (May vary according to the chosen partner university campus)",
     laptop_provided: false,
-    hiring_partners_count: 3000,
+    hiring_partners_count: 2500,
     is_trending: false,
     is_new: false,
     rating_breakdown: {
@@ -658,7 +658,7 @@ export const MOCK_COLLEGES: Record<string, ScrapedCollege> = {
     ],
     seats: "200 Seats/Batch",
     laptop_provided: false,
-    hiring_partners_count: 100,
+    hiring_partners_count: 500,
     is_trending: false,
     is_new: false,
     rating_breakdown: {
@@ -746,7 +746,7 @@ export const MOCK_COLLEGES: Record<string, ScrapedCollege> = {
     ],
     seats: "120 Seats/Batch",
     laptop_provided: false,
-    hiring_partners_count: 200,
+    hiring_partners_count: 400,
     is_trending: false,
     is_new: false,
     rating_breakdown: {
@@ -1354,7 +1354,7 @@ export const MOCK_COLLEGES: Record<string, ScrapedCollege> = {
     ],
     seats: "150 Seats/Batch",
     laptop_provided: false,
-    hiring_partners_count: 200,
+    hiring_partners_count: 100,
     is_trending: false,
     is_new: false,
     rating_breakdown: {
@@ -1605,7 +1605,7 @@ export const MOCK_COLLEGES: Record<string, ScrapedCollege> = {
     ],
     seats: "120 Seats/Batch",
     laptop_provided: false,
-    hiring_partners_count: 200,
+    hiring_partners_count: 400,
     is_trending: false,
     is_new: false,
     rating_breakdown: {

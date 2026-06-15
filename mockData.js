@@ -166,7 +166,7 @@ exports.MOCK_COLLEGES = {
         ],
         "seats": "120 Seats/Batch",
         "laptop_provided": false,
-        "hiring_partners_count": 150,
+        "hiring_partners_count": 50,
         "brochureUrl": "/brochures/mirai.pdf",
         "is_trending": false,
         "is_new": false,
@@ -266,7 +266,7 @@ exports.MOCK_COLLEGES = {
         ],
         "seats": "300 Seats/Batch (May vary depending on chosen partner university campus)",
         "laptop_provided": false,
-        "hiring_partners_count": 150,
+        "hiring_partners_count": 1000,
         "is_trending": false,
         "is_new": false,
         "rating_breakdown": {
@@ -465,7 +465,7 @@ exports.MOCK_COLLEGES = {
         ],
         "seats": "200 Seats/Batch (May vary according to the chosen partner university campus)",
         "laptop_provided": false,
-        "hiring_partners_count": 150,
+        "hiring_partners_count": 2500,
         "is_trending": false,
         "is_new": false,
         "rating_breakdown": {
@@ -555,7 +555,7 @@ exports.MOCK_COLLEGES = {
         ],
         "seats": "300 Seats/Batch (May vary depending on the chosen partner university campus)",
         "laptop_provided": false,
-        "hiring_partners_count": 150,
+        "hiring_partners_count": 3100,
         "is_trending": false,
         "is_new": false,
         "rating_breakdown": {
@@ -640,7 +640,7 @@ exports.MOCK_COLLEGES = {
         ],
         "seats": "200 Seats/Batch",
         "laptop_provided": false,
-        "hiring_partners_count": 150,
+        "hiring_partners_count": 500,
         "is_trending": false,
         "is_new": false,
         "rating_breakdown": {
@@ -739,7 +739,7 @@ exports.MOCK_COLLEGES = {
         ],
         "seats": "120 Seats/Batch",
         "laptop_provided": false,
-        "hiring_partners_count": 150,
+        "hiring_partners_count": 400,
         "is_trending": false,
         "is_new": false,
         "rating_breakdown": {
@@ -834,7 +834,7 @@ exports.MOCK_COLLEGES = {
         ],
         "seats": "120 Seats/Batch",
         "laptop_provided": false,
-        "hiring_partners_count": 150,
+        "hiring_partners_count": 3000,
         "is_trending": false,
         "is_new": false,
         "rating_breakdown": {
@@ -932,7 +932,7 @@ exports.MOCK_COLLEGES = {
         ],
         "seats": "600+ Students/Batch (~3% Acceptance Rate)",
         "laptop_provided": false,
-        "hiring_partners_count": 900,
+        "hiring_partners_count": 1200,
         "brochureUrl": "/brochures/scaler.pdf",
         "scholarship_info": "NSET merit scholarships up to 100% tuition waiver. JEE / BITSAT scores bypass NSET entirely.",
         "apply_url": "https://www.scaler.com/school-of-technology/cs-ai",
@@ -1016,7 +1016,7 @@ exports.MOCK_COLLEGES = {
         ],
         "seats": "120 Seats/Batch",
         "laptop_provided": false,
-        "hiring_partners_count": 150,
+        "hiring_partners_count": 1300,
         "is_trending": false,
         "is_new": false,
         "rating_breakdown": {
@@ -1113,7 +1113,7 @@ exports.MOCK_COLLEGES = {
         ],
         "seats": "300 Seats/Batch (100 per Specialization)",
         "laptop_provided": "MacBook Pro",
-        "hiring_partners_count": 500,
+        "hiring_partners_count": 1000,
         "brochureUrl": "/brochures/polaris.pdf",
         "scholarship_info": "Women in Tech, Entrepreneur & need-based scholarships. 90+ JEE percentile → direct admission offer.",
         "apply_url": "https://www.polariscampus.com",
@@ -1294,7 +1294,7 @@ exports.MOCK_COLLEGES = {
         ],
         "seats": "120 Seats/Batch",
         "laptop_provided": false,
-        "hiring_partners_count": 150,
+        "hiring_partners_count": 1200,
         "is_trending": false,
         "is_new": false,
         "rating_breakdown": {
@@ -1384,7 +1384,7 @@ exports.MOCK_COLLEGES = {
         ],
         "seats": "120 Seats/Batch",
         "laptop_provided": false,
-        "hiring_partners_count": 150,
+        "hiring_partners_count": 100,
         "is_trending": false,
         "is_new": false,
         "rating_breakdown": {
@@ -1469,7 +1469,7 @@ exports.MOCK_COLLEGES = {
         ],
         "seats": "120 Seats/Batch",
         "laptop_provided": false,
-        "hiring_partners_count": 150,
+        "hiring_partners_count": 100,
         "is_trending": false,
         "is_new": false,
         "rating_breakdown": {
@@ -1557,7 +1557,7 @@ exports.MOCK_COLLEGES = {
         ],
         "seats": "120 Seats/Batch",
         "laptop_provided": false,
-        "hiring_partners_count": 150,
+        "hiring_partners_count": 540,
         "is_trending": false,
         "is_new": false,
         "rating_breakdown": {
@@ -1656,7 +1656,7 @@ exports.MOCK_COLLEGES = {
         ],
         "seats": "120 Seats/Batch",
         "laptop_provided": false,
-        "hiring_partners_count": 150,
+        "hiring_partners_count": 400,
         "is_trending": false,
         "is_new": false,
         "rating_breakdown": {
@@ -1741,7 +1741,7 @@ exports.MOCK_COLLEGES = {
         ],
         "seats": "120 Seats/Batch",
         "laptop_provided": false,
-        "hiring_partners_count": 150,
+        "hiring_partners_count": 300,
         "is_trending": false,
         "is_new": false,
         "rating_breakdown": {
@@ -1842,7 +1842,7 @@ exports.MOCK_COLLEGES = {
         ],
         "seats": "250 Seats/Batch",
         "laptop_provided": "Lenovo ThinkPad",
-        "hiring_partners_count": 400,
+        "hiring_partners_count": 1000,
         "scholarship_info": "Up to 100% merit scholarship based on VSAT/JEE scores. Specialized awards for Haryana domicile students.",
         "apply_url": "https://www.vedam.org/?utm_source=Google&utm_medium=Paid&utm_campaign=SOTKeyword&https://vedam.org/?utm_source=Google&utm_medium=Paid&utm_campaign=SOTKeyword&gad_source=1&gad_campaignid=23834897710&gbraid=0AAAAA_CuBmEcYnFirNchwN0xiikTZUsBT&gclid=Cj0KCQjwornRBhCrARIsAON5exEVmXiwRsNTN2Gl2EpwQDn7RJ7alXiV-J9wsdvrvfQp8Fo91y3QvWMaAva2EALw_wcB",
         "is_trending": false,
@@ -1934,7 +1934,7 @@ exports.MOCK_COLLEGES = {
         ],
         "seats": "120 Seats/Batch",
         "laptop_provided": false,
-        "hiring_partners_count": 150,
+        "hiring_partners_count": 500,
         "is_trending": false,
         "is_new": false,
         "rating_breakdown": {
@@ -2103,7 +2103,7 @@ exports.MOCK_COLLEGES = {
         ],
         "seats": "120 Seats/Batch",
         "laptop_provided": false,
-        "hiring_partners_count": 150,
+        "hiring_partners_count": 100,
         "is_trending": false,
         "is_new": false,
         "rating_breakdown": {
@@ -2188,7 +2188,7 @@ exports.MOCK_COLLEGES = {
         ],
         "seats": "120 Seats/Batch",
         "laptop_provided": false,
-        "hiring_partners_count": 150,
+        "hiring_partners_count": 50,
         "is_trending": false,
         "is_new": false,
         "rating_breakdown": {
@@ -2273,7 +2273,7 @@ exports.MOCK_COLLEGES = {
         ],
         "seats": "120 Seats/Batch",
         "laptop_provided": false,
-        "hiring_partners_count": 150,
+        "hiring_partners_count": 100,
         "is_trending": false,
         "is_new": false,
         "rating_breakdown": {
