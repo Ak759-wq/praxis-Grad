@@ -1388,7 +1388,7 @@ export const MOCK_COLLEGES: Record<string, ScrapedCollege> = {
   },
   "Leapstart School of Technology": {
     name: "Leapstart School of Technology",
-    foundingYear: 2024,
+    foundingYear: 2025,
     brochureUrl: "/brochures/leapstart.pdf",
     website_url: "https://leapstart.in",
     apply_url: "https://leapstart.in",

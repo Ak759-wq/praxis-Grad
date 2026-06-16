@@ -1484,7 +1484,7 @@ exports.MOCK_COLLEGES = {
         "industryMentors": "Mentors from leading tech startups and corporate scaling hubs",
         "fastTrack": false,
         "fastTrackDetails": "",
-        "foundingYear": 2023,
+        "foundingYear": 2025,
         "batchSize": 120,
         "degreeRecognition": "UGC Approved Degree via UGC-recognized university partners",
         "entranceExam": {
