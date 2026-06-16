@@ -1572,7 +1572,7 @@ exports.MOCK_COLLEGES = {
         "industryMentors": "Mentors from leading tech startups and corporate scaling hubs",
         "fastTrack": false,
         "fastTrackDetails": "",
-        "foundingYear": 2023,
+        "foundingYear": 2026,
         "batchSize": 120,
         "degreeRecognition": "UGC Approved Degree via Lovely Professional University (LPU) & S-VYASA University",
         "entranceExam": {

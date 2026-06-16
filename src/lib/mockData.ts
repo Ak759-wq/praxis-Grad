@@ -1467,7 +1467,7 @@ export const MOCK_COLLEGES: Record<string, ScrapedCollege> = {
   },
   "Futurense School of AI": {
     name: "Futurense School of AI",
-    foundingYear: 2025,
+    foundingYear: 2026,
     website_url: "https://www.futurense.com/",
     apply_url: "https://www.futurense.com/",
     image_url: "https://cdn.prod.website-files.com/687e11ae076e4c47d227af38/68d263d4fc641068b6bbb294_homepage%20glph%20image.png",
