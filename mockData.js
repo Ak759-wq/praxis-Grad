@@ -166,7 +166,7 @@ exports.MOCK_COLLEGES = {
         ],
         "seats": "120 Seats/Batch",
         "laptop_provided": false,
-        "hiring_partners_count": 50,
+        "hiring_partners_count": 100,
         "brochureUrl": "/brochures/mirai.pdf",
         "is_trending": false,
         "is_new": false,
@@ -1199,7 +1199,7 @@ exports.MOCK_COLLEGES = {
     ],
   }
         ],
-        "seats": "180 Seats/Batch (Selective Admissions - May vary by partner university campus)",
+        "seats": "200 Seats/Batch (Selective Admissions - May vary by partner university campus)",
         "laptop_provided": "MacBook Air",
         "hiring_partners_count": 800,
         "brochureUrl": "/brochures/newton.pdf",
@@ -1220,7 +1220,7 @@ exports.MOCK_COLLEGES = {
         "fastTrack": true,
         "fastTrackDetails": "NSAT bypass for strong JEE Main score or competitive programming ratings — direct to personal interview",
         "foundingYear": 2023,
-        "batchSize": 180,
+        "batchSize": 200,
         "degreeRecognition": "UGC Approved Degrees via Rishihood, ADYPU & S-VYASA Universities",
         "entranceExam": {
             "pattern": "Online NSAT (120 mins: English, Math, General Aptitude)",
@@ -2352,7 +2352,7 @@ exports.MOCK_COLLEGES = {
         ],
         "seats": "60 Seats/Batch",
         "laptop_provided": false,
-        "hiring_partners_count": 40,
+        "hiring_partners_count": 200,
         "is_trending": true,
         "is_new": true,
         "rating_breakdown": {

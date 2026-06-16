@@ -213,7 +213,7 @@ export const MOCK_COLLEGES: Record<string, ScrapedCollege> = {
     ],
     seats: "120 Seats/Batch",
     laptop_provided: false,
-    hiring_partners_count: 50,
+    hiring_partners_count: 100,
     brochureUrl: "/brochures/mirai.pdf",
     is_trending: false,
     is_new: false,
@@ -1188,7 +1188,7 @@ export const MOCK_COLLEGES: Record<string, ScrapedCollege> = {
         review_text: "Recognized globally for its mandatory 6-month internship, MacBook provision, and global immersion programs (Silicon Valley trips)."
       }
     ],
-    seats: "180 Seats/Batch (Selective Admissions - May vary by partner university campus)",
+    seats: "200 Seats/Batch (Selective Admissions - May vary by partner university campus)",
     laptop_provided: "MacBook Air",
     hiring_partners_count: 800,
     brochureUrl: "/brochures/newton.pdf",
@@ -1208,7 +1208,7 @@ export const MOCK_COLLEGES: Record<string, ScrapedCollege> = {
     industryMentors: "SDE Mentors and Product Managers from global tech giants",
     fastTrack: true,
     fastTrackDetails: "NSAT bypass for strong JEE Main score or competitive programming ratings — direct to personal interview",
-    batchSize: 180,
+    batchSize: 200,
     degreeRecognition: "UGC Approved Degrees via Rishihood, ADYPU & S-VYASA Universities",
     entranceExam: {
       pattern: "Online NSAT (120 mins: Math, Aptitude, English) + Personal Interview",
@@ -2247,7 +2247,7 @@ export const MOCK_COLLEGES: Record<string, ScrapedCollege> = {
     ],
     seats: "60 Seats/Batch",
     laptop_provided: false,
-    hiring_partners_count: 40,
+    hiring_partners_count: 200,
     is_trending: true,
     is_new: true,
     rating_breakdown: {
