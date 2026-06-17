@@ -376,7 +376,7 @@ exports.MOCK_COLLEGES = {
             "campus": 4.3
         },
         "degreeType": "B.Tech in CS & AI",
-        "applicationFee": "₹1,000 (BSAT Registration Fee)",
+        "applicationFee": "₹500 (BSAT Registration Fee)",
         "examDates": "Exam dates not mentioned on official website",
         "industryMentors": "Mentors from Microsoft, Amazon, Zomato, and Swiggy",
         "fastTrack": false,
