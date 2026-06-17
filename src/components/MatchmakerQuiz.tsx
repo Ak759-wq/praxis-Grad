@@ -180,23 +180,23 @@ export default function MatchmakerQuiz({
 
       // 1. Academic Focus Scoring (100 pts max)
       if (answers.focus === 'swe') {
-        const sweKeywords = ['software', 'programming', 'coding', 'dsa', 'developer', 'fullstack', 'backend', 'frontend', 'dev', 'glain', 'scaler', 'bosscoder', 'kalvium', 'blocks', 'git', 'full-stack'];
+        const sweKeywords = ['software', 'programming', 'coding', 'dsa', 'developer', 'fullstack', 'backend', 'frontend', 'dev', 'glain', 'scaler', 'bosscoder', 'kalvium', 'blocks', 'git', 'full-stack', 'gita', 'codinggita', 'anantam', 'codeanantam'];
         sweKeywords.forEach(kw => {
           if (cName.includes(kw) || cSummary.includes(kw) || cTags.includes(kw) || curricText.includes(kw)) {
             matchedKeywords.push(kw);
           }
         });
-        const scoreMultiplier = cName.includes('scaler') || cName.includes('bosscoder') || cTags.includes('competitive coding') || cTags.includes('software engineering') ? 1.2 : 1.0;
+        const scoreMultiplier = cName.includes('scaler') || cName.includes('bosscoder') || cName.includes('codinggita') || cName.includes('anantam') || cTags.includes('competitive coding') || cTags.includes('software engineering') ? 1.2 : 1.0;
         sFocus = Math.min(100, Math.round((matchedKeywords.length * 15 + 40) * scoreMultiplier));
         if (sFocus > 70) reasons.push("Core Software Engineering Track");
       } else if (answers.focus === 'ai') {
-        const aiKeywords = ['ai', 'ml', 'machine learning', 'neural', 'llm', 'generative', 'nlp', 'pytorch', 'tensorflow', 'zenith', 'newton', 'polaris', 'deep learning', 'computer vision'];
+        const aiKeywords = ['ai', 'ml', 'machine learning', 'neural', 'llm', 'generative', 'nlp', 'pytorch', 'tensorflow', 'zenith', 'newton', 'polaris', 'deep learning', 'computer vision', 'mirai', 'anantam', 'codeanantam'];
         aiKeywords.forEach(kw => {
           if (cName.includes(kw) || cSummary.includes(kw) || cTags.includes(kw) || curricText.includes(kw)) {
             matchedKeywords.push(kw);
           }
         });
-        const scoreMultiplier = cName.includes('zenith') || cName.includes('newton') || cName.includes('tensor') || cTags.includes('ai-native') || cTags.includes('ai product focus') || cTags.includes('ai-native focus') ? 1.2 : 1.0;
+        const scoreMultiplier = cName.includes('zenith') || cName.includes('newton') || cName.includes('tensor') || cName.includes('mirai') || cName.includes('anantam') || cTags.includes('ai-native') || cTags.includes('ai product focus') || cTags.includes('ai-native focus') ? 1.2 : 1.0;
         sFocus = Math.min(100, Math.round((matchedKeywords.length * 15 + 40) * scoreMultiplier));
         if (sFocus > 70) reasons.push("AI-Native Curriculum Focus");
       } else if (answers.focus === 'biz') {
@@ -371,14 +371,14 @@ export default function MatchmakerQuiz({
 
       // 1. Focus
       if (answers.focus === 'swe') {
-        const sweKeywords = ['software', 'programming', 'coding', 'dsa', 'developer', 'fullstack', 'backend', 'frontend', 'dev', 'glain', 'scaler', 'bosscoder', 'kalvium', 'blocks', 'git', 'full-stack'];
+        const sweKeywords = ['software', 'programming', 'coding', 'dsa', 'developer', 'fullstack', 'backend', 'frontend', 'dev', 'glain', 'scaler', 'bosscoder', 'kalvium', 'blocks', 'git', 'full-stack', 'gita', 'codinggita', 'anantam', 'codeanantam'];
         const matches = sweKeywords.filter(kw => cName.includes(kw) || cSummary.includes(kw) || cTags.includes(kw) || curricText.includes(kw));
-        const scoreMultiplier = cName.includes('scaler') || cName.includes('bosscoder') || cTags.includes('competitive coding') || cTags.includes('software engineering') ? 1.2 : 1.0;
+        const scoreMultiplier = cName.includes('scaler') || cName.includes('bosscoder') || cName.includes('codinggita') || cName.includes('anantam') || cTags.includes('competitive coding') || cTags.includes('software engineering') ? 1.2 : 1.0;
         sFocus = Math.min(100, Math.round((matches.length * 15 + 40) * scoreMultiplier));
       } else if (answers.focus === 'ai') {
-        const aiKeywords = ['ai', 'ml', 'machine learning', 'neural', 'llm', 'generative', 'nlp', 'pytorch', 'tensorflow', 'zenith', 'newton', 'polaris', 'deep learning', 'computer vision'];
+        const aiKeywords = ['ai', 'ml', 'machine learning', 'neural', 'llm', 'generative', 'nlp', 'pytorch', 'tensorflow', 'zenith', 'newton', 'polaris', 'deep learning', 'computer vision', 'mirai', 'anantam', 'codeanantam'];
         const matches = aiKeywords.filter(kw => cName.includes(kw) || cSummary.includes(kw) || cTags.includes(kw) || curricText.includes(kw));
-        const scoreMultiplier = cName.includes('zenith') || cName.includes('newton') || cName.includes('tensor') || cTags.includes('ai-native') || cTags.includes('ai product focus') || cTags.includes('ai-native focus') ? 1.2 : 1.0;
+        const scoreMultiplier = cName.includes('zenith') || cName.includes('newton') || cName.includes('tensor') || cName.includes('mirai') || cName.includes('anantam') || cTags.includes('ai-native') || cTags.includes('ai product focus') || cTags.includes('ai-native focus') ? 1.2 : 1.0;
         sFocus = Math.min(100, Math.round((matches.length * 15 + 40) * scoreMultiplier));
       } else if (answers.focus === 'biz') {
         const bizKeywords = ['business', 'mba', 'startup', 'entrepreneur', 'product management', 'pm', 'venture', 'economics', 'finance', 'marketing', 'masters union', 'growth', 'scaling'];
