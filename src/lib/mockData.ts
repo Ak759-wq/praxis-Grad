@@ -400,7 +400,7 @@ export const MOCK_COLLEGES: Record<string, ScrapedCollege> = {
     laptop_provided: "MacBook Air",
     hiring_partners_count: 500,
     brochureUrl: "/brochures/bosscoder-school-technology-brochure.pdf",
-    scholarship_info: "BSAT merit scholarships — up to 60% off total tuition fees for top performers.",
+    scholarship_info: "BSAT merit scholarships — up to 100% scholarship waiver for top performers.",
     apply_url: "https://www.bosscoderacademy.com/school-of-technology",
     is_trending: false,
     is_new: false,
