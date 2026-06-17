@@ -1765,7 +1765,7 @@ export const MOCK_COLLEGES: Record<string, ScrapedCollege> = {
         review_text: "Valued for its 100% placement assistance, 24x7 labs, and a strict emphasis on practical execution over theory."
       }
     ],
-    seats: "360 Seats/Batch",
+    seats: "200 Seats/Batch",
     laptop_provided: "Lenovo ThinkPad",
     hiring_partners_count: 1000,
     scholarship_info: "Up to 100% merit scholarship based on VSAT/JEE scores. Specialized awards for Haryana domicile students.",
@@ -1784,7 +1784,7 @@ export const MOCK_COLLEGES: Record<string, ScrapedCollege> = {
     industryMentors: "SDE Leaders from Meta, Apple, Google, Netflix, and Amazon",
     fastTrack: true,
     fastTrackDetails: "VSAT bypass for JEE Math >= 85 percentile or Olympiad state-ranks",
-    batchSize: 360,
+    batchSize: 200,
     degreeRecognition: "UGC Approved B.Tech via ADYPU Pune & Sushant University",
     entranceExam: {
       pattern: "Online VSAT (Vedam Scholastic Aptitude Test) + Personal Interview (JEE/Coding bypass available)",

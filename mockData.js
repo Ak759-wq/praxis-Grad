@@ -1840,7 +1840,7 @@ exports.MOCK_COLLEGES = {
     ],
   }
         ],
-        "seats": "250 Seats/Batch",
+        "seats": "200 Seats/Batch",
         "laptop_provided": "Lenovo ThinkPad",
         "hiring_partners_count": 1000,
         "scholarship_info": "Up to 100% merit scholarship based on VSAT/JEE scores. Specialized awards for Haryana domicile students.",
@@ -1860,7 +1860,7 @@ exports.MOCK_COLLEGES = {
         "fastTrack": true,
         "fastTrackDetails": "VSAT bypass for JEE Math >= 85 percentile or Olympiad state-ranks",
         "foundingYear": 2024,
-        "batchSize": 250,
+        "batchSize": 200,
         "degreeRecognition": "UGC Approved B.Tech via ADYPU Pune & Sushant University",
         "entranceExam": {
             "pattern": "Online VSAT (60 mins: Logical Reasoning & Quantitative Skills)",
