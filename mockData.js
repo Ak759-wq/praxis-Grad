@@ -303,7 +303,7 @@ exports.MOCK_COLLEGES = {
         "image_url": "https://images.shiksha.com/mediadata/images/1769508783phpnggDGj.jpeg",
         "eligibility": "Class 12 pass + BSAT (Bosscoder Scholastic Admission Test) + Personal Interview.",
         "location": "Raja Rajeshwari Nagar, Bangalore, Karnataka",
-        "fees": "₹17.75 Lakhs (Total 4-year Tuition). + ₹1.1–2L/year Hostel (₹4.4–8L over 4 years) + ₹50K/year Mess. Total residential cost approx. ₹24–28L. Merit & need-based scholarships available.",
+        "fees": "₹22 Lakhs to ₹24 Lakhs (Total 4-Year B.Tech Tuition & Program Fee).",
         "curriculum_summary": "B.Tech in Computer Science and Artificial Intelligence.",
         "contact_info": "admissions@bosscoderacademy.com",
         "degree_partner": "S-VYASA University",
