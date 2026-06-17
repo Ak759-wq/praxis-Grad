@@ -28,6 +28,8 @@ import {
 
 interface MatchmakerQuizProps {
   colleges: College[];
+  compareBucket?: College[];
+  onCompareToggle?: (college: College) => void;
 }
 
 interface MatchResult {
@@ -45,7 +47,11 @@ interface MatchResult {
   matchedKeywords: string[];
 }
 
-export default function MatchmakerQuiz({ colleges }: MatchmakerQuizProps) {
+export default function MatchmakerQuiz({ 
+  colleges,
+  compareBucket = [],
+  onCompareToggle
+}: MatchmakerQuizProps) {
   const [step, setStep] = useState(1);
   const [answers, setAnswers] = useState({
     focus: '',
@@ -138,7 +144,7 @@ export default function MatchmakerQuiz({ colleges }: MatchmakerQuizProps) {
       const sum = values.reduce((a, b) => a + b, 0);
       return sum / values.length;
     }
-    // Static fallbacks for specific mock strings if regex fails
+    // Static fallbacks if regex fails
     if (str.includes('3 lakh')) return 4.5;
     if (str.includes('6.5') || str.includes('8.5')) return 7.5;
     return 15.0; // default average
@@ -190,7 +196,7 @@ export default function MatchmakerQuiz({ colleges }: MatchmakerQuizProps) {
             matchedKeywords.push(kw);
           }
         });
-        const scoreMultiplier = cName.includes('zenith') || cName.includes('newton') || cName.includes('tensor') || cTags.includes('ai product focus') || cTags.includes('ai-native focus') ? 1.2 : 1.0;
+        const scoreMultiplier = cName.includes('zenith') || cName.includes('newton') || cName.includes('tensor') || cTags.includes('ai-native') || cTags.includes('ai product focus') || cTags.includes('ai-native focus') ? 1.2 : 1.0;
         sFocus = Math.min(100, Math.round((matchedKeywords.length * 15 + 40) * scoreMultiplier));
         if (sFocus > 70) reasons.push("AI-Native Curriculum Focus");
       } else if (answers.focus === 'biz') {
@@ -208,31 +214,26 @@ export default function MatchmakerQuiz({ colleges }: MatchmakerQuizProps) {
       // 2. Budget Affordability Scoring (100 pts max)
       const parsedFee = parseCollegeFees(cFeeStr);
       if (answers.budget === 'low') {
-        // Wants under 10L
         if (parsedFee <= 10.0) {
           sBudget = 100;
           reasons.push("Fits low tuition budget (under ₹10L)");
         } else if (parsedFee <= 15.0) {
-          // Linear decay from 10L to 15L
           sBudget = Math.round(100 - (parsedFee - 10) * 12);
           reasons.push("Slightly above low budget threshold");
         } else {
           sBudget = Math.max(10, Math.round(40 - (parsedFee - 15) * 4));
         }
       } else if (answers.budget === 'med') {
-        // Wants 10L - 20L
         if (parsedFee >= 10.0 && parsedFee <= 20.0) {
           sBudget = 100;
           reasons.push("Fits moderate budget (₹10L - ₹20L)");
         } else if (parsedFee < 10.0) {
-          // Cheaper is fine but penalize slightly for tier mismatch
           sBudget = Math.round(100 - (10.0 - parsedFee) * 4);
           reasons.push("Well below moderate budget");
         } else {
           sBudget = Math.max(10, Math.round(100 - (parsedFee - 20.0) * 10));
         }
       } else if (answers.budget === 'high') {
-        // Wants 20L+
         if (parsedFee >= 20.0) {
           sBudget = 100;
           reasons.push("Matches premium budget (₹20L+)");
@@ -272,7 +273,6 @@ export default function MatchmakerQuiz({ colleges }: MatchmakerQuizProps) {
       }
 
       // 5. Laptop Provision Scoring (100 pts max)
-      // FIX: safe check of laptop_provided using double negation to solve typescript compiler error
       const providesLaptop = !!college.laptop_provided;
       if (answers.laptop === 'provided') {
         sLaptop = providesLaptop ? 100 : 30;
@@ -289,8 +289,9 @@ export default function MatchmakerQuiz({ colleges }: MatchmakerQuizProps) {
       } else {
         const cityMap: Record<string, string[]> = {
           bangalore: ['bangalore', 'bengaluru', 'electronic city'],
-          ncr: ['ncr', 'gurugram', 'gurgaon', 'noida', 'delhi', 'ghaziabad'],
-          pune: ['pune']
+          ncr: ['ncr', 'gurugram', 'gurgaon', 'noida', 'delhi', 'ghaziabad', 'sonepat', 'haryana'],
+          pune: ['pune'],
+          hyderabad: ['hyderabad', 'telangana']
         };
         const searchCities = cityMap[answers.location] || [];
         const isMatchedCity = searchCities.some(city => cLoc.includes(city));
@@ -335,6 +336,150 @@ export default function MatchmakerQuiz({ colleges }: MatchmakerQuizProps) {
     return scored.sort((a, b) => b.score - a.score).slice(0, 4);
   }, [colleges, answers, weights, step]);
 
+  // Real-Time Matching Count Engine
+  const liveMatchCount = useMemo(() => {
+    let activeWeight = 0;
+    if (answers.focus) activeWeight += weights.focus;
+    if (answers.budget) activeWeight += weights.budget;
+    if (answers.delivery) activeWeight += weights.delivery;
+    if (answers.degree) activeWeight += weights.degree;
+    if (answers.laptop) activeWeight += weights.laptop;
+    if (answers.location) activeWeight += weights.location;
+
+    if (activeWeight === 0) return colleges.length;
+
+    const matched = colleges.filter(college => {
+      const cName = college.name.toLowerCase();
+      const cTags = (college.tags || []).map(t => t.toLowerCase());
+      const cLoc = (college.location || '').toLowerCase();
+      const cFeeStr = (college.fees || '').toLowerCase();
+      const partner = (college.degree_partner || '').toLowerCase();
+      const cSummary = (college.curriculum_summary || '').toLowerCase();
+      const curricText = [
+        college.year_1_curriculum,
+        college.year_2_curriculum,
+        college.year_3_curriculum,
+        college.year_4_curriculum
+      ].filter(Boolean).map(c => c!.toLowerCase()).join(' ');
+
+      let sFocus = 0;
+      let sBudget = 0;
+      let sDelivery = 0;
+      let sDegree = 0;
+      let sLaptop = 0;
+      let sLocation = 0;
+
+      // 1. Focus
+      if (answers.focus === 'swe') {
+        const sweKeywords = ['software', 'programming', 'coding', 'dsa', 'developer', 'fullstack', 'backend', 'frontend', 'dev', 'glain', 'scaler', 'bosscoder', 'kalvium', 'blocks', 'git', 'full-stack'];
+        const matches = sweKeywords.filter(kw => cName.includes(kw) || cSummary.includes(kw) || cTags.includes(kw) || curricText.includes(kw));
+        const scoreMultiplier = cName.includes('scaler') || cName.includes('bosscoder') || cTags.includes('competitive coding') || cTags.includes('software engineering') ? 1.2 : 1.0;
+        sFocus = Math.min(100, Math.round((matches.length * 15 + 40) * scoreMultiplier));
+      } else if (answers.focus === 'ai') {
+        const aiKeywords = ['ai', 'ml', 'machine learning', 'neural', 'llm', 'generative', 'nlp', 'pytorch', 'tensorflow', 'zenith', 'newton', 'polaris', 'deep learning', 'computer vision'];
+        const matches = aiKeywords.filter(kw => cName.includes(kw) || cSummary.includes(kw) || cTags.includes(kw) || curricText.includes(kw));
+        const scoreMultiplier = cName.includes('zenith') || cName.includes('newton') || cName.includes('tensor') || cTags.includes('ai-native') || cTags.includes('ai product focus') || cTags.includes('ai-native focus') ? 1.2 : 1.0;
+        sFocus = Math.min(100, Math.round((matches.length * 15 + 40) * scoreMultiplier));
+      } else if (answers.focus === 'biz') {
+        const bizKeywords = ['business', 'mba', 'startup', 'entrepreneur', 'product management', 'pm', 'venture', 'economics', 'finance', 'marketing', 'masters union', 'growth', 'scaling'];
+        const matches = bizKeywords.filter(kw => cName.includes(kw) || cSummary.includes(kw) || cTags.includes(kw) || curricText.includes(kw));
+        const scoreMultiplier = cName.includes('masters') || cTags.includes('embedded mini-mba') || cTags.includes('experiential startup lab') ? 1.2 : 1.0;
+        sFocus = Math.min(100, Math.round((matches.length * 20 + 35) * scoreMultiplier));
+      }
+
+      // 2. Budget
+      if (answers.budget) {
+        const parsedFee = parseCollegeFees(cFeeStr);
+        if (answers.budget === 'low') {
+          if (parsedFee <= 10.0) sBudget = 100;
+          else if (parsedFee <= 15.0) sBudget = Math.round(100 - (parsedFee - 10) * 12);
+          else sBudget = Math.max(10, Math.round(40 - (parsedFee - 15) * 4));
+        } else if (answers.budget === 'med') {
+          if (parsedFee >= 10.0 && parsedFee <= 20.0) sBudget = 100;
+          else if (parsedFee < 10.0) sBudget = Math.round(100 - (10.0 - parsedFee) * 4);
+          else sBudget = Math.max(10, Math.round(100 - (parsedFee - 20.0) * 10));
+        } else if (answers.budget === 'high') {
+          if (parsedFee >= 20.0) sBudget = 100;
+          else if (parsedFee >= 15.0) sBudget = Math.round(80 + (parsedFee - 15.0) * 4);
+          else sBudget = Math.max(30, Math.round(80 - (15.0 - parsedFee) * 5));
+        }
+      }
+
+      // 3. Delivery
+      if (answers.delivery) {
+        const isOnlineOrHybrid = cTags.includes('byod laptop policy') || cName.includes('100x') || cName.includes('codinggita') || cName.includes('kalvium') || cLoc.includes('remote') || cLoc.includes('online') || cLoc.includes('anywhere');
+        if (answers.delivery === 'residential') {
+          sDelivery = isOnlineOrHybrid ? 30 : 100;
+        } else if (answers.delivery === 'hybrid') {
+          sDelivery = isOnlineOrHybrid ? 100 : 50;
+        }
+      }
+
+      // 4. Degree
+      if (answers.degree) {
+        const degreeType = (college.degreeType || '').toLowerCase();
+        const hasBTech = degreeType.includes('b.tech') || partner.includes('b.tech') || degreeType.includes('b.e.') || partner.includes('b.e.');
+        const hasBScBCA = degreeType.includes('b.sc') || degreeType.includes('bca') || partner.includes('b.sc') || partner.includes('bca');
+        const isCertification = !hasBTech && !hasBScBCA;
+
+        if (answers.degree === 'btech') {
+          sDegree = hasBTech ? 100 : hasBScBCA ? 50 : 20;
+        } else if (answers.degree === 'bca_bsc') {
+          sDegree = hasBScBCA ? 100 : hasBTech ? 60 : 30;
+        } else if (answers.degree === 'skills') {
+          sDegree = isCertification ? 100 : cTags.includes('portfolio hiring approach') ? 80 : 40;
+        }
+      }
+
+      // 5. Laptop
+      if (answers.laptop) {
+        const providesLaptop = !!college.laptop_provided;
+        if (answers.laptop === 'provided') {
+          sLaptop = providesLaptop ? 100 : 30;
+        } else if (answers.laptop === 'byod') {
+          sLaptop = providesLaptop ? 70 : 100;
+        }
+      }
+
+      // 6. Location
+      if (answers.location) {
+        if (answers.location === 'flexible') {
+          sLocation = 100;
+        } else {
+          const cityMap: Record<string, string[]> = {
+            bangalore: ['bangalore', 'bengaluru', 'electronic city'],
+            ncr: ['ncr', 'gurugram', 'gurgaon', 'noida', 'delhi', 'ghaziabad', 'sonepat', 'haryana'],
+            pune: ['pune'],
+            hyderabad: ['hyderabad', 'telangana']
+          };
+          const searchCities = cityMap[answers.location] || [];
+          const isMatchedCity = searchCities.some(city => cLoc.includes(city));
+          const isOnlineOrHybrid = cTags.includes('byod laptop policy') || cName.includes('100x') || cName.includes('codinggita') || cName.includes('kalvium') || cLoc.includes('remote') || cLoc.includes('online') || cLoc.includes('anywhere');
+          if (isMatchedCity) {
+            sLocation = 100;
+          } else if (isOnlineOrHybrid) {
+            sLocation = 75;
+          } else {
+            sLocation = 30;
+          }
+        }
+      }
+
+      const weightedScore = (
+        (answers.focus ? sFocus * weights.focus : 0) +
+        (answers.budget ? sBudget * weights.budget : 0) +
+        (answers.delivery ? sDelivery * weights.delivery : 0) +
+        (answers.degree ? sDegree * weights.degree : 0) +
+        (answers.laptop ? sLaptop * weights.laptop : 0) +
+        (answers.location ? sLocation * weights.location : 0)
+      ) / activeWeight;
+
+      return Math.round(weightedScore) >= 60;
+    });
+
+    return matched.length;
+  }, [colleges, answers, weights]);
+
   // Stepper icon map
   const renderStepIcon = (index: number) => {
     switch (index) {
@@ -351,7 +496,7 @@ export default function MatchmakerQuiz({ colleges }: MatchmakerQuizProps) {
   const stepLabels = ["Focus", "Budget", "Delivery", "Degree", "Laptop", "Location"];
 
   return (
-    <div className="glass-panel border border-white/5 rounded-3xl p-6 md:p-8 max-w-4xl mx-auto shadow-[0_20px_50px_rgba(0,0,0,0.6)] relative overflow-hidden bg-black/40 backdrop-blur-xl">
+    <div className="glass-panel border border-white/5 rounded-3xl p-6 md:p-8 max-w-4xl mx-auto shadow-[0_20px_50px_rgba(0,0,0,0.6)] relative overflow-hidden bg-black/40 backdrop-blur-xl animate-fade-in">
       <div className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-violet-500/10 blur-[90px]" />
       <div className="pointer-events-none absolute -left-20 -bottom-20 h-56 w-56 rounded-full bg-emerald-500/5 blur-[90px]" />
       
@@ -654,13 +799,14 @@ export default function MatchmakerQuiz({ colleges }: MatchmakerQuizProps) {
           <h2 className="text-2xl font-black text-white mb-1.5 flex items-center gap-2 tracking-tight">
             <MapPin className="h-6 w-6 text-violet-400" /> What is your primary location preference?
           </h2>
-          <p className="text-xs text-neutral-400 mb-6">Select your ideal region. Bangalore and NCR hubs offer high physical industry networking access.</p>
+          <p className="text-xs text-neutral-400 mb-6">Select your ideal region. Bangalore, NCR, Pune, and Hyderabad hubs offer high physical industry networking access.</p>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             {[
               { id: 'bangalore', emoji: '🌴', title: 'Bangalore' },
               { id: 'ncr', emoji: '🏙️', title: 'Delhi NCR' },
               { id: 'pune', emoji: '🏔️', title: 'Pune' },
+              { id: 'hyderabad', emoji: '🕌', title: 'Hyderabad' },
               { id: 'flexible', emoji: '🇮🇳', title: 'Flexible / Online' }
             ].map(opt => {
               const isSelected = answers.location === opt.id;
@@ -753,6 +899,7 @@ export default function MatchmakerQuiz({ colleges }: MatchmakerQuizProps) {
           <div className="space-y-4">
             {calculatedResults.map(({ college, score, breakdown, reasons, matchedKeywords }, idx) => {
               const isExpanded = expandedCollegeId === college.id;
+              const isInCompare = compareBucket.some(c => c.id === college.id);
               return (
                 <div 
                   key={college.id || idx} 
@@ -898,6 +1045,19 @@ export default function MatchmakerQuiz({ colleges }: MatchmakerQuizProps) {
 
                   {/* Actions Row */}
                   <div className="flex justify-end gap-3 border-t border-white/5 pt-3.5">
+                    {onCompareToggle && (
+                      <button
+                        onClick={() => onCompareToggle(college)}
+                        className={`px-4 py-2.5 rounded-xl border text-[11px] font-extrabold transition-all cursor-pointer flex items-center gap-1.5 ${
+                          isInCompare
+                            ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/20 animate-fade-in'
+                            : 'border-white/10 hover:bg-white/5 text-neutral-300 hover:text-white'
+                        }`}
+                      >
+                        <SlidersHorizontal className="h-3.5 w-3.5" />
+                        <span>{isInCompare ? 'Compared ✓' : 'Compare'}</span>
+                      </button>
+                    )}
                     <a
                       href={college.id ? `/college/${college.id}` : `/college/${encodeURIComponent(college.name)}`}
                       className="px-4 py-2.5 rounded-xl border border-white/10 hover:bg-white/5 text-[11px] font-extrabold text-neutral-300 hover:text-white transition-all cursor-pointer"
@@ -932,7 +1092,7 @@ export default function MatchmakerQuiz({ colleges }: MatchmakerQuizProps) {
 
       {/* ── Navigation Bottom Bar ── */}
       {step < 7 && !isLoadingResults && (
-        <div className="mt-8 pt-4 border-t border-white/5 flex justify-between select-none">
+        <div className="mt-8 pt-4 border-t border-white/5 flex items-center justify-between select-none">
           <button
             onClick={handleBack}
             disabled={step === 1}
@@ -940,6 +1100,13 @@ export default function MatchmakerQuiz({ colleges }: MatchmakerQuizProps) {
           >
             Back
           </button>
+
+          {/* Live Match Counter */}
+          <div className="hidden sm:flex items-center gap-1.5 text-xs text-neutral-400 font-semibold bg-white/[0.02] border border-white/5 px-3 py-1.5 rounded-full">
+            <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
+            <span>✨ {liveMatchCount} {liveMatchCount === 1 ? 'college' : 'colleges'} matching your profile</span>
+          </div>
+
           <button
             onClick={handleNext}
             disabled={
