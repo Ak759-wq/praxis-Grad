@@ -134,9 +134,11 @@ export default function ROICalculator() {
                   onChange={(e) => setLoanTenure(parseInt(e.target.value))}
                   className="w-full rounded-lg border border-white/10 bg-neutral-950 px-2.5 py-1.5 text-xs text-white outline-none focus:border-emerald-500/50"
                 >
-                  <option value={3}>3 Years</option>
-                  <option value={5}>5 Years</option>
-                  <option value={7}>7 Years</option>
+                  {Array.from({ length: 16 }, (_, i) => i + 5).map((yr) => (
+                    <option key={yr} value={yr}>
+                      {yr} Years
+                    </option>
+                  ))}
                 </select>
               </div>
             </div>
