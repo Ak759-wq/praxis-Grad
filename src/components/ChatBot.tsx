@@ -44,7 +44,6 @@ export default function ChatBot() {
 
   // Suggested starting questions with visual icons
   const starterChips = [
-    { text: "Which college offers up to 2.5L stipend?", icon: "💰" },
     { text: "What are the fees for Scaler School?", icon: "💸" },
     { text: "Who founded Zenith School of AI?", icon: "🤖" },
     { text: "Compare Polaris and Zenith", icon: "⚔️" }
