@@ -42,12 +42,7 @@ export default function ChatBot() {
 
   const totalColleges = Object.keys(MOCK_COLLEGES).length;
 
-  // Suggested starting questions with visual icons
-  const starterChips = [
-    { text: "What are the fees for Scaler School?", icon: "💸" },
-    { text: "Who founded Zenith School of AI?", icon: "🤖" },
-    { text: "Compare Polaris and Zenith", icon: "⚔️" }
-  ];
+
 
   // Load initial welcome message
   useEffect(() => {
@@ -601,20 +596,6 @@ export default function ChatBot() {
             )}
           </div>
 
-          {/* Quick Suggestion starter chips */}
-          <div className="px-4 py-3 border-t border-white/5 bg-white/[0.01] flex flex-wrap gap-2 overflow-x-auto select-none shrink-0 max-h-[110px] overflow-y-auto relative z-10 scrollbar-none">
-            {starterChips.map((chip, idx) => (
-              <button
-                key={idx}
-                onClick={() => handleSend(chip.text)}
-                className="px-3 py-1.5 rounded-xl bg-white/[0.02] hover:bg-violet-600/10 border border-white/10 hover:border-violet-500/30 text-[10.5px] text-neutral-300 hover:text-white transition-all duration-300 cursor-pointer flex items-center gap-1.5 hover:scale-[1.02] hover:-translate-y-0.5"
-              >
-                <span>{chip.icon}</span>
-                <span className="font-semibold tracking-wide">{chip.text}</span>
-                <ArrowRight className="h-3 w-3 text-neutral-500 group-hover:text-white shrink-0" />
-              </button>
-            ))}
-          </div>
 
           {/* Bottom input area */}
           <div className="p-4 bg-black/90 border-t border-white/5 flex items-center gap-3 relative z-10">
