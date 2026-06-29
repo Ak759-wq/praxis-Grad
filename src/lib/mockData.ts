@@ -529,8 +529,8 @@ export const MOCK_COLLEGES: Record<string, ScrapedCollege> = {
   "Intellipaat School of Technology (IST)": {
     name: "Intellipaat School of Technology (IST)",
     foundingYear: 2025,
-    website_url: "https://intellipaat.com/school-of-technology/",
-    apply_url: "https://intellipaat.com/school-of-technology/",
+    website_url: "https://intellipaat.com/ist/",
+    apply_url: "https://intellipaat.com/ist/",
     brochureUrl: "/brochures/intellipaat.pdf",
     image_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0AgFcdU-_xXvxP9z8q963dOyN3TuII4eCkQ&s",
     eligibility: "Class 12th + IST Entrance Exam.",
