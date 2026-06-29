@@ -444,7 +444,7 @@ export default function ChatBot() {
         const content = trimmed.slice(2);
         const html = applyMarkdown(content);
         return (
-          <li key={lineIdx} className="ml-4 list-disc text-xs sm:text-sm text-neutral-300 font-light leading-relaxed mt-1" 
+          <li key={lineIdx} className="ml-1 pl-3 border-l border-violet-500/30 list-none text-xs sm:text-sm text-neutral-300 font-light leading-relaxed mt-1.5 hover:border-violet-400/60 transition-colors" 
               dangerouslySetInnerHTML={{ __html: html }} />
         );
       }
@@ -517,28 +517,34 @@ export default function ChatBot() {
 
       {/* Glassmorphic Chat Panel Overlay Drawer */}
       {isOpen && (
-        <div className="fixed bottom-20 left-4 right-4 sm:left-auto sm:right-6 sm:bottom-24 z-50 w-auto sm:w-[420px] max-w-md h-[500px] sm:h-[550px] rounded-3xl border border-white/10 bg-neutral-950/80 p-0 shadow-[0_30px_70px_rgba(0,0,0,0.85)] backdrop-blur-2xl animate-bounce-in flex flex-col justify-between overflow-hidden">
-          {/* Top header ambient glow */}
-          <div className="absolute top-0 left-0 right-0 h-[85px] bg-gradient-to-b from-violet-500/15 to-transparent pointer-events-none z-0" />
+        <div className="fixed bottom-20 left-4 right-4 sm:left-auto sm:right-6 sm:bottom-24 z-50 w-auto sm:w-[420px] max-w-md h-[500px] sm:h-[550px] rounded-[28px] border border-white/15 bg-neutral-950/85 p-0 shadow-[0_32px_100px_-15px_rgba(0,0,0,0.8)] backdrop-blur-3xl animate-bounce-in flex flex-col justify-between overflow-hidden">
+          {/* Vibrant ambient gradients for premium aesthetic */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(139,92,246,0.12),transparent_45%)] pointer-events-none z-0" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(236,72,153,0.06),transparent_40%)] pointer-events-none z-0" />
+          <div className="absolute top-0 left-0 right-0 h-[85px] bg-gradient-to-b from-violet-500/10 to-transparent pointer-events-none z-0" />
 
           {/* Header */}
-          <div className="flex items-center justify-between bg-white/[0.01] px-4 py-4 border-b border-white/5 relative z-10 select-none">
+          <div className="flex items-center justify-between bg-white/[0.01] px-4.5 py-4 border-b border-white/[0.06] relative z-10 select-none">
             <div className="flex items-center gap-2.5">
               <div className="relative flex h-9 w-9 items-center justify-center rounded-xl bg-violet-600/20 border border-violet-500/30 text-violet-300 shadow-inner">
                 <img src="/chatbot-logo.png" className="h-5 w-5 object-contain select-none pointer-events-none invert" alt="Advisor logo" />
-                <span className="absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full bg-emerald-500 border border-neutral-950 animate-ping" />
-                <span className="absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full bg-emerald-500 border border-neutral-950" />
+                <span className="absolute -bottom-0.5 -right-0.5 h-2 w-2 rounded-full bg-emerald-500 border border-neutral-950 animate-ping" />
+                <span className="absolute -bottom-0.5 -right-0.5 h-2 w-2 rounded-full bg-emerald-500 border border-neutral-950" />
               </div>
               <div>
-                <p className="text-xs font-black text-white tracking-wide leading-tight">Praxis Grad Advisor</p>
-                <span className="text-[9.5px] text-emerald-400 font-extrabold tracking-wider flex items-center gap-1 mt-0.5">
-                  LIVE ADVISOR BOT
+                <p className="text-sm font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-200 to-neutral-400 tracking-wide leading-tight">Praxis Advisor</p>
+                <span className="text-[9px] text-emerald-400 font-bold tracking-widest flex items-center gap-1.5 mt-0.5">
+                  <span className="relative flex h-1.5 w-1.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
+                  </span>
+                  ONLINE
                 </span>
               </div>
             </div>
             <button 
               onClick={() => setIsOpen(false)}
-              className="text-neutral-500 hover:text-white rounded-lg p-1.5 hover:bg-white/5 transition-all cursor-pointer"
+              className="text-neutral-400 hover:text-white rounded-full p-2 hover:bg-white/5 border border-transparent hover:border-white/10 transition-all duration-300 cursor-pointer"
             >
               <X className="h-4.5 w-4.5" />
             </button>
@@ -556,16 +562,16 @@ export default function ChatBot() {
               >
                 {/* Avatar (Hidden on User for cleaner look) */}
                 {msg.sender === 'ai' && (
-                  <div className="h-7 w-7 rounded-lg bg-violet-600/20 border border-violet-500/30 text-violet-300 flex items-center justify-center shrink-0 shadow-inner">
-                    <Sparkles className="h-3.5 w-3.5" />
+                  <div className="h-7 w-7 rounded-lg bg-neutral-900 border border-white/10 text-white flex items-center justify-center shrink-0 shadow-inner">
+                    <img src="/chatbot-logo.png" className="h-4 w-4 object-contain invert" alt="Bot" />
                   </div>
                 )}
 
                 {/* Bubble */}
                 <div className={`max-w-[80%] rounded-2xl px-4 py-3 text-xs sm:text-sm leading-relaxed border ${
                   msg.sender === 'user'
-                    ? 'bg-gradient-to-r from-violet-600/20 to-fuchsia-600/10 border-violet-500/20 text-slate-100 rounded-br-sm shadow-sm'
-                    : 'bg-white/[0.02] border-white/5 text-slate-200 rounded-bl-sm'
+                    ? 'bg-gradient-to-tr from-violet-600/30 via-violet-600/20 to-fuchsia-600/15 border-violet-500/20 text-slate-100 rounded-br-sm shadow-[0_4px_16px_rgba(139,92,246,0.1)]'
+                    : 'bg-white/[0.03] border-white/[0.06] text-neutral-200 rounded-bl-sm shadow-[0_4px_12px_rgba(0,0,0,0.1)] hover:bg-white/[0.04] transition-colors duration-300'
                 }`}>
                   {formatMessageText(msg.text)}
                   <span className="block text-[8.5px] text-neutral-500 mt-2 text-right font-semibold">
@@ -578,10 +584,10 @@ export default function ChatBot() {
             {/* Bouncing Typing Animation bubbles */}
             {isTyping && (
               <div className="flex gap-3 items-end">
-                <div className="h-7 w-7 rounded-lg bg-violet-600/20 border border-violet-500/30 text-violet-300 flex items-center justify-center shrink-0 shadow-inner">
-                  <Sparkles className="h-3.5 w-3.5" />
+                <div className="h-7 w-7 rounded-lg bg-neutral-900 border border-white/10 text-white flex items-center justify-center shrink-0 shadow-inner">
+                  <img src="/chatbot-logo.png" className="h-4 w-4 object-contain invert" alt="Bot" />
                 </div>
-                <div className="rounded-2xl px-4 py-3 bg-white/[0.02] border border-white/5 flex items-center gap-1.5 w-16 justify-center">
+                <div className="rounded-2xl px-4 py-3 bg-white/[0.03] border border-white/[0.06] flex items-center gap-1.5 w-16 justify-center shadow-md">
                   <span className="h-1.5 w-1.5 bg-violet-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
                   <span className="h-1.5 w-1.5 bg-violet-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
                   <span className="h-1.5 w-1.5 bg-violet-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
@@ -592,7 +598,7 @@ export default function ChatBot() {
 
 
           {/* Bottom input area */}
-          <div className="p-4 bg-black/90 border-t border-white/5 flex items-center gap-3 relative z-10">
+          <div className="p-4 bg-neutral-950/50 border-t border-white/[0.06] flex items-center gap-3 relative z-10 backdrop-blur-md">
             <input
               type="text"
               placeholder="Ask fees, founders, syllabus, comparisons..."
@@ -601,12 +607,12 @@ export default function ChatBot() {
               onKeyDown={(e) => {
                 if (e.key === 'Enter') handleSend();
               }}
-              className="flex-grow rounded-xl border border-white/10 bg-neutral-950/80 px-4 py-2.5 text-xs text-white placeholder-neutral-500 outline-none transition-all focus:border-violet-500/50 focus:ring-1 focus:ring-violet-500/20"
+              className="flex-grow rounded-2xl border border-white/[0.08] bg-white/[0.02] px-4.5 py-3 text-xs sm:text-sm text-white placeholder-neutral-500 outline-none transition-all duration-300 focus:border-violet-500/50 focus:bg-white/[0.04] focus:shadow-[0_0_20px_-3px_rgba(139,92,246,0.25)] focus:ring-0"
             />
             <button
               onClick={() => handleSend()}
               disabled={!inputMessage.trim()}
-              className="flex h-9 w-9 items-center justify-center rounded-xl bg-violet-600 text-white transition-all hover:bg-violet-500 active:scale-95 disabled:bg-neutral-850 disabled:text-neutral-600 border border-violet-500/30 cursor-pointer"
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-violet-600 to-indigo-600 text-white transition-all duration-300 hover:scale-105 active:scale-95 disabled:from-neutral-900 disabled:to-neutral-900 disabled:text-neutral-600 disabled:border-white/5 disabled:scale-100 disabled:shadow-none border-none cursor-pointer shadow-[0_4px_16px_rgba(139,92,246,0.3)] hover:shadow-[0_4px_20px_rgba(139,92,246,0.5)]"
             >
               <Send className="h-4.5 w-4.5" />
             </button>
