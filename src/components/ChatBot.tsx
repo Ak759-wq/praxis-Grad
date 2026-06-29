@@ -195,7 +195,7 @@ export default function ChatBot() {
     return matchedColleges;
   };
 
-  const handleQuery = (query: string) => {
+  const handleQuery = async (query: string) => {
     setIsTyping(true);
 
     if (isOffTopic(query)) {
@@ -209,6 +209,40 @@ export default function ChatBot() {
       return;
     }
 
+    try {
+      // 1. Try fetching from the Gemini /api/chat endpoint
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          messages: [...messages, { id: 'temp', sender: 'user', text: query, timestamp: new Date() }].map(m => ({
+            sender: m.sender,
+            text: m.text
+          })),
+          activeCollege: activeCollegeFromUrl
+        })
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        if (data.success && data.text) {
+          setMessages(prev => [...prev, {
+            id: `ai-${Date.now()}`,
+            sender: 'ai' as const,
+            text: data.text,
+            timestamp: new Date()
+          }]);
+          setIsTyping(false);
+          return;
+        }
+      }
+    } catch (apiErr) {
+      console.warn("API Chat route failed or key not configured. Falling back to local offline engine:", apiErr);
+    }
+
+    // 2. Offline high-fidelity fallback engine
     setTimeout(() => {
       try {
         const normalized = normalizeText(query);
@@ -403,6 +437,8 @@ export default function ChatBot() {
       formatted = formatted.replace(/\*(.*?)\*/g, '<em class="italic">$1</em>');
       // Replace code `text`
       formatted = formatted.replace(/`(.*?)`/g, '<code class="bg-neutral-900 px-1 py-0.5 rounded text-violet-400 font-mono text-[11px]">$1</code>');
+      // Replace markdown links [text](url)
+      formatted = formatted.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-violet-400 hover:underline font-semibold">$1</a>');
       return formatted;
     };
 
