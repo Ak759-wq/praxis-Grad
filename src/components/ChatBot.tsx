@@ -525,7 +525,7 @@ export default function ChatBot() {
           <div className="flex items-center justify-between bg-white/[0.01] px-4 py-4 border-b border-white/5 relative z-10 select-none">
             <div className="flex items-center gap-2.5">
               <div className="relative flex h-9 w-9 items-center justify-center rounded-xl bg-violet-600/20 border border-violet-500/30 text-violet-300 shadow-inner">
-                <Bot className="h-5 w-5" />
+                <img src="/chatbot-logo.png" className="h-5 w-5 object-contain select-none pointer-events-none invert" alt="Advisor logo" />
                 <span className="absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full bg-emerald-500 border border-neutral-950 animate-ping" />
                 <span className="absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full bg-emerald-500 border border-neutral-950" />
               </div>
