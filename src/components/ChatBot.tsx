@@ -524,27 +524,27 @@ export default function ChatBot() {
           <div className="absolute top-0 left-0 right-0 h-[85px] bg-gradient-to-b from-violet-500/10 to-transparent pointer-events-none z-0" />
 
           {/* Header */}
-          <div className="flex items-center justify-between bg-white/[0.01] px-4.5 py-4 border-b border-white/[0.06] relative z-10 select-none">
-            <div className="flex items-center gap-2.5">
-              <div className="relative flex h-9 w-9 items-center justify-center rounded-xl bg-violet-600/20 border border-violet-500/30 text-violet-300 shadow-inner">
-                <img src="/chatbot-logo.png" className="h-5 w-5 object-contain select-none pointer-events-none invert" alt="Advisor logo" />
-                <span className="absolute -bottom-0.5 -right-0.5 h-2 w-2 rounded-full bg-emerald-500 border border-neutral-950 animate-ping" />
-                <span className="absolute -bottom-0.5 -right-0.5 h-2 w-2 rounded-full bg-emerald-500 border border-neutral-950" />
+          <div className="flex items-center justify-between bg-gradient-to-r from-white/[0.01] via-white/[0.02] to-white/[0.01] px-5 py-4.5 border-b border-white/[0.08] relative z-10 select-none">
+            <div className="flex items-center gap-3">
+              <div className="relative flex h-10 w-10 items-center justify-center rounded-full bg-white/[0.03] border border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.02)]">
+                <img src="/chatbot-logo.png" className="h-5.5 w-5.5 object-contain select-none pointer-events-none invert opacity-95" alt="Advisor logo" />
+                <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full bg-emerald-500 border-2 border-neutral-950 shadow-[0_0_8px_#10b981]" />
               </div>
               <div>
-                <p className="text-sm font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-200 to-neutral-400 tracking-wide leading-tight">Praxis Advisor</p>
-                <span className="text-[9px] text-emerald-400 font-bold tracking-widest flex items-center gap-1.5 mt-0.5">
-                  <span className="relative flex h-1.5 w-1.5">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
+                <p className="text-sm font-semibold text-white tracking-wide leading-tight">Praxis Advisor</p>
+                <div className="flex items-center gap-2 mt-1.5">
+                  <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[8.5px] font-bold tracking-wider uppercase inline-flex items-center gap-1.5 shadow-[0_2px_8px_rgba(16,185,129,0.05)]">
+                    <span className="h-1 w-1 rounded-full bg-emerald-400 animate-pulse" />
+                    Active
                   </span>
-                  ONLINE
-                </span>
+                  <span className="text-[10px] text-neutral-500 font-medium">AI Career Guide</span>
+                </div>
               </div>
             </div>
             <button 
               onClick={() => setIsOpen(false)}
-              className="text-neutral-400 hover:text-white rounded-full p-2 hover:bg-white/5 border border-transparent hover:border-white/10 transition-all duration-300 cursor-pointer"
+              className="text-neutral-400 hover:text-white rounded-full h-8 w-8 flex items-center justify-center border border-white/10 hover:border-white/20 bg-white/5 hover:bg-white/10 transition-all duration-300 cursor-pointer shadow-sm active:scale-95"
+              title="Close Chat"
             >
               <X className="h-4.5 w-4.5" />
             </button>
